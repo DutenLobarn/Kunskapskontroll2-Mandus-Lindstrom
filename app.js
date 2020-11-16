@@ -15,15 +15,16 @@ let button = document.querySelector('button');
 let input = document.querySelector('input');
 let body = document.querySelector('body');
 
+// Skapar en addventlistener som ger input.value till min variabel cityName.
 button.addEventListener('click', function(event) {
     event.preventDefault();
     cityName = input.value;
 
+    // Kallar på min funktion getWeather.
     getWeather();
 });
 
-
-
+// Skapar en funhktion som ska hämta den information jag vill ha och varifrån den ska komma ifrån.
 function getWeather() {
 
     // Min API jag använder har jag lagt i en variabel och gjort den till en template litural string för att kunna lägga in min API Key och den stad vi kommer söka på. 
@@ -43,61 +44,35 @@ function getWeather() {
         h1Description.innerText = weatherDescription;
         imgIcon.src = weatherIcon;
         pTemperature.innerText = `${weatherTemperatur} °C`;
-        pWindspeed.innerText = weatherWindSpeed;
-        pHumidity.innerText = weatherHumidity;
+        pWindspeed.innerText = `Windspeed: ${weatherWindSpeed}`;
+        pHumidity.innerText = `Humidity: ${weatherHumidity}`;
 
+        // Kallar på min funktion changeColor och lägger in min variabel weatherTemperatur som parameter.
         changeColor(weatherTemperatur);
-    }).catch(function(error) {
+
+        // Skapar en funktion som ger ett alert meddelande ifall vi skrivit in och sökt på ett "dåligt/otillgängligt" input.
+    }).catch(function() {
         alert('Hörredu snygging testa att söka på någon annan text för det du sökte på hittar vi inget resultat på.');
     });
 };
 
-const extremlyFreesing = -25
-const freesing = -10
-const veryCold = 0;
-const cold = 5;
-const warm = 10;
-const veryWarm = 20;
-const hot = 30;
-
+// Skapar en funktion som ändrar backgrunds bilden beroende på temperaturen i den stad vi sökt på.
+// (background image istället för background color för jag tycker det blev snyggare) 
 function changeColor(weatherTemperatur) {
 
-    if (weatherTemperatur <= extremlyFreesing) {
-        body.style.backgroundColor = 'red';
-    } else if (weatherTemperatur <= freesing) {
-        body.style.backgroundColor = 'blue';
-    } else if (weatherTemperatur <= veryCold) {
-        body.style.backgroundColor = 'yellow';
-    } else if (weatherTemperatur <= cold) {
-        body.style.backgroundColor = 'orange';
-    } else if (weatherTemperatur <= warm) {
-        body.style.backgroundColor = 'navy';
-    } else if (weatherTemperatur <= veryWarm) {
-        body.style.backgroundColor = 'olive';
-    } else if (weatherTemperatur <= hot && weatherTemperatur > 40) {
-        body.style.backgroundColor = 'grey';
+    if (weatherTemperatur <= -10) {
+        body.style.backgroundImage = "url('/img/vinter.jpg')";
+    } else if (weatherTemperatur <= 0) {
+        body.style.backgroundImage = "url('/img/vinter10.jpg')";
+    } else if (weatherTemperatur <= 5) {
+        body.style.backgroundImage = "url('/img/grad0.jpg')";
+    } else if (weatherTemperatur <= 10) {
+        body.style.backgroundImage = "url('/img/vår5.jpg')";
+    } else if (weatherTemperatur <= 20) {
+        body.style.backgroundImage = "url('/img/vår11.jpg')";
+    } else if (weatherTemperatur <= 30) {
+        body.style.backgroundImage = "url('/img/sommar20.jpg')";
     } else {
-        body.style.backgroundColor = 'pink';
+        body.style.backgroundImage = "url('/img/öken.jpg')";
     }
-
-}
-
-// // Jag hämtar min url/API och gör om den till .json och sen får jag ut data som jag kan hantera i min kod.
-// fetch(url).then(function(response) {
-//     return response.json();
-// }).then(function(data) {
-
-// // Sorterar och hämtar all data jag behöver.
-// let weatherDescription = data.weather[0].description;
-// let weatherIcon = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-// let weatherTemperatur = Math.round(data.main.temp);
-// let weatherWindSpeed = data.wind.speed;
-// let weatherHumidity = data.main.humidity;
-
-// // Byt ut data i de element jag hämtat från HTML.
-// h1Description.innerText = weatherDescription;
-// imgIcon.src = weatherIcon;
-// pTemperature.innerText = weatherTemperatur;
-// pWindspeed.innerText = weatherWindSpeed;
-// pHumidity.innerText = weatherHumidity;
-// });
+};

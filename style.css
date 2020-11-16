@@ -1,0 +1,74 @@
+        /* Nollställer style inställningar */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Stylar min body */
+        
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(/img/himlen.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        /* Stylar min div med classen container */
+        
+        .container {
+            height: 70vh;
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-around;
+            background-image: url(/Img/årstider.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 1rem;
+        }
+        /* Stylar min form */
+        
+        .weather {
+            height: 10vh;
+            min-width: 50vw;
+            text-align: center;
+            padding-top: 2rem;
+        }
+        /* Stylar min label */
+        
+        #city-text {
+            color: #ffffff;
+        }
+        /* Stylar min button */
+        
+        .city-btn {
+            background-color: rgb(50, 192, 14);
+            color: white;
+            padding: 0 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        /* Stylar min img */
+        
+        img {
+            height: 5rem;
+        }
+        /* Stylar min h1 */
+        
+        .description {
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        /* Stylar mina p */
+        
+        p {
+            color: #ffffff;
+            font-size: 2.5rem;
+        }
