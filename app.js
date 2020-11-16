@@ -50,6 +50,8 @@ function getWeather() {
         // Kallar på min funktion changeColor och lägger in min variabel weatherTemperatur som parameter.
         changeColor(weatherTemperatur);
 
+        humidityChange(weatherHumidity);
+
         // Skapar en funktion som ger ett alert meddelande ifall vi skrivit in och sökt på ett "dåligt/otillgängligt" input.
     }).catch(function() {
         alert('Hörredu snygging testa att söka på någon annan text för det du sökte på hittar vi inget resultat på.');
@@ -74,5 +76,26 @@ function changeColor(weatherTemperatur) {
         body.style.backgroundImage = "url('/img/sommar20.jpg')";
     } else {
         body.style.backgroundImage = "url('/img/öken.jpg')";
+    }
+};
+
+let changeColorHumidity = document.querySelector('.humidity');
+
+function humidityChange(weatherHumidity) {
+    if (weatherHumidity <= 20) {
+        changeColorHumidity.style.fontFamily = 'Lucida Sans';
+        changeColorHumidity.style.color = 'red';
+    } else if (weatherHumidity <= 40) {
+        changeColorHumidity.style.fontFamily = 'serif';
+        changeColorHumidity.style.color = 'yellow';
+    } else if (weatherHumidity <= 60) {
+        changeColorHumidity.style.fontFamily = 'monospace';
+        changeColorHumidity.style.color = 'navy';
+    } else if (weatherHumidity <= 80) {
+        changeColorHumidity.style.fontFamily = 'fantasy';
+        changeColorHumidity.style.color = 'green';
+    } else {
+        changeColorHumidity.style.fontFamily = 'cursive';
+        changeColorHumidity.style.color = 'pink';
     }
 };
